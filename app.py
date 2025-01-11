@@ -34,7 +34,13 @@ def create_documents(template_path, data, output_dir):
 
 
 def main():
-    # st.toast("Bienvenido a mi aplicación!", icon="🎉")
+    if "toast" not in st.session_state:
+        st.session_state.toast = False
+
+    if not st.session_state.toast:
+        st.toast("Debe agregar {{ nombre_completo }} en la plantilla .docx", icon="❗")
+        st.session_state.toast = True
+
     st.image("assets/background.jpg", use_container_width=True)
     st.title("Generador de Certificados")
     st.write(
