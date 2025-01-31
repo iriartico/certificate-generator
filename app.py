@@ -13,6 +13,7 @@ def create_documents(template_path, data, output_dir):
     for i, row in data.iterrows():
         context = {
             "nombre_completo": row.get("Nombre Completo", "").title(),
+            "cargo": row.get("Cargo", ""),
         }
         output_path = os.path.join(
             output_dir, f"Certificado - {row.get('Nombre Completo', '').title()}.docx"
